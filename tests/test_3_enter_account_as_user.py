@@ -1,18 +1,5 @@
-from locators import BurgerLocators
-import time
-from data import BurgerTestData
-import settings
-import pytest
-from selenium import webdriver
-
-@pytest.fixture(scope='function')
-def driver():
-    driver = webdriver.Chrome()
-    driver.get(settings.URL)
-
-    yield driver
-
-    driver.quit()
+from tests.locators import BurgerLocators
+from tests.data import BurgerTestData
 
 
 class TestEnterAccountAsUser:
@@ -26,6 +13,6 @@ class TestEnterAccountAsUser:
 
         personal_account_enter = driver.find_element(*BurgerLocators.BUTTON_ACCOUNT)
         personal_account_enter.click()
-        time.sleep(1)
+
         title_profile = driver.find_element(*BurgerLocators.TITLE_PROFILE)
         assert title_profile.is_displayed() and title_profile.text == 'Профиль'

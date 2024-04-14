@@ -1,17 +1,7 @@
-from locators import BurgerLocators
-from data import BurgerTestData
-import settings
-import pytest
-from selenium import webdriver
+from tests.locators import BurgerLocators
+from tests.data import BurgerTestData
 
-@pytest.fixture(scope='function')
-def driver():
-    driver = webdriver.Chrome()
-    driver.get(settings.URL)
 
-    yield driver
-
-    driver.quit()
 
 
 class TestJumpFromAccountToConstructor:
